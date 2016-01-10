@@ -1,37 +1,39 @@
 //
 //  ViewController.swift
-//  navigation bar
+//  Hello World
 //
-//  Created by Taishi Kato on 2016/01/08.
+//  Created by Taishi Kato on 2016/01/02.
 //  Copyright © 2016年 Taishi Kato. All rights reserved.
 //
+
 
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var time = 0
-    
-    func result() {
-        
-        time++
-        
-        print("\(time) second has passed")
-    }
 
+    @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet var textField: UITextField!
+    
+    @IBAction func submit(sender: AnyObject) {
+        print("Button Tapped!")
+        
+        label.text = textField.text
+        let humanAge = label.text
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var timer = NSTimer()
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("result"), userInfo: nil, repeats: true)
+        print("Hello Rob!")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
