@@ -134,11 +134,57 @@
                         <outlet property="registeredText" destination="5jU-QR-2BW" id="sQk-4Y-bTz"/>
                         <outlet property="secondButton" destination="GfQ-Bp-RCc" id="dZn-Ux-gtk"/>
                         <outlet property="username" destination="0Hz-mj-u1r" id="2GA-XX-pd5"/>
+                        <segue destination="FDF-e4-CQA" kind="show" identifier="login" id="SZx-sC-9KZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="564.5" y="478.5"/>
+        </scene>
+        <!--User List-->
+        <scene sceneID="eEV-H0-tzo">
+            <objects>
+                <tableViewController id="b21-Df-QLL" customClass="TableViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="p8R-sf-lxk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="gC6-FB-om4">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gC6-FB-om4" id="2Te-JT-2bj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b21-Df-QLL" id="HvE-Ld-Qfq"/>
+                            <outlet property="delegate" destination="b21-Df-QLL" id="gUw-gA-Wql"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="User List" id="hic-vC-vcu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n46-MM-m4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1923" y="453"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VLe-UB-Bhv">
+            <objects>
+                <navigationController id="FDF-e4-CQA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j78-AX-2vQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="b21-Df-QLL" kind="relationship" relationship="rootViewController" id="gT1-xH-abB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naz-IO-Iz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="453"/>
         </scene>
     </scenes>
 </document>

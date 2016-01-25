@@ -64,7 +64,7 @@ class ViewController: UIViewController {
                 
                     if error == nil {
                         // SignUp successful
-                        print("SignUp Success")
+                        self.performSegueWithIdentifier("login", sender: self)
                     } else {
                         if let errorString = error!.userInfo["error"] as? String {
                             errorMessage = errorString
@@ -80,12 +80,11 @@ class ViewController: UIViewController {
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     if user != nil {
                         // Login successful
-                        print("Login Success")
+                        self.performSegueWithIdentifier("login", sender: self)
                     } else {
                         if let errorString = error!.userInfo["error"] as? String {
                             errorMessage = errorString
                         }
-                        
                         self.displayAlert("Failed Login", message: errorMessage)
                     }
                 })
@@ -115,6 +114,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let currentUser = PFUser.currentUser()
+        
+        if currentUser != nil {
+            self.performSegueWithIdentifier("login", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
