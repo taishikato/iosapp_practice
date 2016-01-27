@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sST-8J-dlw">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -164,11 +165,89 @@
                             <outlet property="delegate" destination="b21-Df-QLL" id="gUw-gA-Wql"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="User List" id="hic-vC-vcu"/>
+                    <navigationItem key="navigationItem" title="User List" id="hic-vC-vcu">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="8s2-eT-bG9">
+                            <connections>
+                                <segue destination="sST-8J-dlw" kind="show" id="MoB-wl-BHu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n46-MM-m4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1923" y="453"/>
+        </scene>
+        <!--Post Image-->
+        <scene sceneID="Bbk-ze-vyo">
+            <objects>
+                <viewController title="Post Image" id="sST-8J-dlw" customClass="PostImageViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fm5-DV-wkM"/>
+                        <viewControllerLayoutGuide type="bottom" id="igm-GL-v2e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f2Y-q0-7Kz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="blank_profile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-2M-5uj">
+                                <rect key="frame" x="62" y="73" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="fIg-vU-Wy1"/>
+                                    <constraint firstAttribute="height" constant="250" id="lai-3y-vxD"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q74-Vv-beT">
+                                <rect key="frame" x="127" y="355" width="121" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="1Kh-OS-HYS"/>
+                                </constraints>
+                                <state key="normal" title="Choose An Image"/>
+                                <connections>
+                                    <action selector="chooseImage:" destination="sST-8J-dlw" eventType="touchUpInside" id="Bgx-Bd-Sp3"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kS-6B-Cb6">
+                                <rect key="frame" x="20" y="400" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOk-IY-THz">
+                                <rect key="frame" x="138" y="450" width="99" height="30"/>
+                                <color key="backgroundColor" red="0.17254901960784313" green="0.47843137254901963" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="99" id="Qci-iE-siB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Post Image">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="postImage:" destination="sST-8J-dlw" eventType="touchUpInside" id="hq7-1G-y4e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9fO-2M-5uj" firstAttribute="centerX" secondItem="f2Y-q0-7Kz" secondAttribute="centerX" id="5rX-Bo-pXT"/>
+                            <constraint firstItem="q74-Vv-beT" firstAttribute="top" secondItem="9fO-2M-5uj" secondAttribute="bottom" constant="32" id="7Bu-X1-16b"/>
+                            <constraint firstItem="6kS-6B-Cb6" firstAttribute="top" secondItem="q74-Vv-beT" secondAttribute="bottom" constant="15" id="ROh-E8-GPC"/>
+                            <constraint firstItem="6kS-6B-Cb6" firstAttribute="trailing" secondItem="f2Y-q0-7Kz" secondAttribute="trailingMargin" id="efX-LS-Th9"/>
+                            <constraint firstItem="9fO-2M-5uj" firstAttribute="top" secondItem="Fm5-DV-wkM" secondAttribute="bottom" constant="53" id="fP3-pe-7iB"/>
+                            <constraint firstItem="6kS-6B-Cb6" firstAttribute="leading" secondItem="f2Y-q0-7Kz" secondAttribute="leadingMargin" id="ftt-3j-2n7"/>
+                            <constraint firstItem="WOk-IY-THz" firstAttribute="top" secondItem="6kS-6B-Cb6" secondAttribute="bottom" constant="20" id="iKA-oB-by0"/>
+                            <constraint firstItem="q74-Vv-beT" firstAttribute="centerX" secondItem="f2Y-q0-7Kz" secondAttribute="centerX" id="mNk-dq-Lhb"/>
+                            <constraint firstItem="WOk-IY-THz" firstAttribute="centerX" secondItem="f2Y-q0-7Kz" secondAttribute="centerX" id="xca-hR-Y0q"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageToPost" destination="9fO-2M-5uj" id="386-aa-cJ3"/>
+                        <outlet property="message" destination="6kS-6B-Cb6" id="j9Y-Ej-MHc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNf-xm-1eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2381.5" y="452.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VLe-UB-Bhv">
@@ -187,4 +266,7 @@
             <point key="canvasLocation" x="1103" y="453"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="blank_profile.jpg" width="320" height="320"/>
+    </resources>
 </document>
