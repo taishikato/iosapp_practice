@@ -13,7 +13,7 @@ class TableViewController: UITableViewController {
     
     var username = [""]
     var userids  = [""]
-    var isFollowing = [false]
+    var isFollowing = ["":false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +42,9 @@ class TableViewController: UITableViewController {
                             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                                 if let objects = objects {
                                     if objects.count > 0 {
-                                        self.isFollowing.append(true)
+                                        self.isFollowing[user.objectId!] = true
                                     } else {
-                                        self.isFollowing.append(false)
+                                        self.isFollowing[user.objectId!] = false
                                     }
                                 }
                                 
@@ -84,7 +84,9 @@ class TableViewController: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = username[indexPath.row]
         
-        if isFollowing[indexPath.row] == true {
+        let followedObjectId = userids[indexPath.row]
+        
+        if isFollowing[followedObjectId] == true {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
 
@@ -93,18 +95,39 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if isFollowing[indexPath.row] == false {
+        let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         
-            isFollowing[indexPath.row] = true
+        let following = PFObject(className: "followers")
+        
+        let followedObjectId = userids[indexPath.row]
+        
+        if isFollowing[followedObjectId] == false {
+        
+            isFollowing[followedObjectId] = true
             
-            let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         
-            let following = PFObject(className: "followers")
             following["following"] = userids[indexPath.row]
             following["follower"]  = PFUser.currentUser()?.objectId
         
             following.saveInBackground()
+        } else {
+            // unfollow
+            isFollowing[followedObjectId] = false
+            cell.accessoryType = UITableViewCellAccessoryType.None
+            
+            var query = PFQuery(className: "followers")
+            query.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
+            query.whereKey("following", equalTo: userids[indexPath.row])
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if let objects = objects {
+                    // objectsを削除
+                    for object in objects {
+                        object.deleteInBackground()
+                    }
+                }
+            })
+            
         }
     }
  }
