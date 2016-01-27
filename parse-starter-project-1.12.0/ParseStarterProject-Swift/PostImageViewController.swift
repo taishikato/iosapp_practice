@@ -7,9 +7,49 @@
 //
 
 import UIKit
+import Parse
 
-class PostImageViewController: UIViewController {
+class PostImageViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    @IBOutlet var imageToPost: UIImageView!
+    
+    @IBAction func chooseImage(sender: AnyObject) {
+        
+        var image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        
+        self.presentViewController(image, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        imageToPost.image = image
+    }
+    
+    @IBOutlet var message: UITextField!
 
+    @IBAction func postImage(sender: AnyObject) {
+        
+        let post = PFObject(className: "Post")
+        post["message"] = message.text
+        post["userId"] = PFUser.currentUser()?.objectId
+        
+        let imageData = UIImagePNGRepresentation(imageToPost.image!)
+        let imageFile = PFFile(name: "image.png", data: imageData!)
+        
+        post["imageFile"] = imageFile
+        post.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                print("success")
+            }
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
