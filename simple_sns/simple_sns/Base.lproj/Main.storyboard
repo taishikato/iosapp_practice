@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="simple_sns" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dog.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="5JL-kc-KJS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAy-IR-mA0">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="2ge-Aj-zYI">
+                                        <connections>
+                                            <action selector="showActivityView:" destination="BYZ-38-t0r" id="C74-EE-wLV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5JL-kc-KJS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2gU-Ea-tgh"/>
+                            <constraint firstItem="PAy-IR-mA0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FVA-BK-Yng"/>
+                            <constraint firstItem="PAy-IR-mA0" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="JTp-qy-NZR"/>
+                            <constraint firstItem="5JL-kc-KJS" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="PXE-GX-Z3L"/>
+                            <constraint firstAttribute="trailing" secondItem="5JL-kc-KJS" secondAttribute="trailing" id="UhL-EC-l9X"/>
+                            <constraint firstItem="5JL-kc-KJS" firstAttribute="trailing" secondItem="PAy-IR-mA0" secondAttribute="trailing" id="aS7-nI-Ihg"/>
+                            <constraint firstItem="PAy-IR-mA0" firstAttribute="leading" secondItem="5JL-kc-KJS" secondAttribute="leading" id="atX-u4-Y5O"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="5JL-kc-KJS" id="A2p-VE-5Tf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242.5" y="339.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Dog.jpeg" width="1125" height="1688"/>
+    </resources>
+</document>
